@@ -1,4 +1,4 @@
-# fin — Random User Profiles
+# FINQ — Random User Profiles
 
 A full-stack app: fetch random user profiles, view details, save favourites, and manage your collection.
 
