@@ -8,10 +8,7 @@ import { saveUser, updateUser, deleteUser } from "@/lib/api";
 import type { User } from "@/types/user";
 import styles from "./profile.module.css";
 import type { ProfilePageProps } from "./profile.types";
-
-function birthYear(dob: string): number {
-  return new Date(dob).getFullYear();
-}
+import { birthYear } from "@/lib/date";
 
 export default function ProfilePage({ params, searchParams }: ProfilePageProps) {
   const { id } = use(params);
