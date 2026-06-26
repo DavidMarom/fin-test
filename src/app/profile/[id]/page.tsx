@@ -129,7 +129,7 @@ export default function ProfilePage({ params, searchParams }: ProfilePageProps) 
         <section className={styles.section}>
           <dl className={styles.grid}>
             <dt className={styles.label}>מגדר</dt>
-            <dd className={styles.value}>{original.gender}</dd>
+            <dd className={`${styles.value} ltr-field`}>{original.gender}</dd>
 
             <dt className={styles.label}>שם</dt>
             <dd className={styles.nameFields}>
@@ -152,7 +152,7 @@ export default function ProfilePage({ params, searchParams }: ProfilePageProps) 
             </dd>
 
             <dt className={styles.label}>גיל</dt>
-            <dd className={styles.value}>
+            <dd className={`${styles.value} ltr-field`}>
               {original.age} ({birthYear(original.dob)})
             </dd>
 
