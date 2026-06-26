@@ -34,6 +34,7 @@ export function UserRow({ user, onClick }: UserRowProps) {
         <span className={styles.phone}>{user.phone}</span>
         <span className={styles.email}>{user.email}</span>
       </div>
+      <span className={styles.chevron}>›</span>
     </li>
   );
 }

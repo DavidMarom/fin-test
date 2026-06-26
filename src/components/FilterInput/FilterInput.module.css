@@ -1,25 +1,33 @@
 .wrapper {
-  padding: var(--space-3) var(--space-4);
+  padding: var(--space-4) var(--space-5);
   border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg);
+  max-width: 860px;
+  margin: 0 auto;
+  width: 100%;
+  /* un-center it since the list container handles centering */
+  box-sizing: border-box;
 }
 
 .input {
   width: 100%;
-  padding: var(--space-2) var(--space-3);
-  background: var(--color-surface-raised);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
+  padding: 12px var(--space-4);
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-pill);
   color: var(--color-text-primary);
   font-size: 0.9rem;
   font-family: inherit;
   outline: none;
-  transition: border-color 0.15s;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  box-shadow: var(--shadow-card);
 }
 
 .input:focus {
   border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-dim);
 }
 
 .input::placeholder {
-  color: var(--color-text-secondary);
+  color: var(--color-text-muted);
 }

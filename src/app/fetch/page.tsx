@@ -33,11 +33,14 @@ export default function FetchPage() {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <Link href="/" className={styles.back}>← Back</Link>
+        <div className={styles.headerTop}>
+          <Link href="/" className={styles.back}>← Back</Link>
+          <button className={styles.refetch} onClick={load} disabled={loading}>
+            {loading ? "Loading…" : "Refetch"}
+          </button>
+        </div>
         <h1 className={styles.title}>Random Profiles</h1>
-        <button className={styles.refetch} onClick={load} disabled={loading}>
-          {loading ? "Loading…" : "Refetch"}
-        </button>
+        <p className={styles.subtitle}>Click any row to view full details and save to your collection.</p>
       </header>
 
       {loading && <Skeleton rows={10} />}

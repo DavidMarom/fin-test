@@ -32,11 +32,14 @@ export default function HistoryPage() {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <Link href="/" className={styles.back}>← Back</Link>
+        <div className={styles.headerTop}>
+          <Link href="/" className={styles.back}>← Back</Link>
+          <button className={styles.refresh} onClick={load} disabled={loading}>
+            {loading ? "Loading…" : "Refresh"}
+          </button>
+        </div>
         <h1 className={styles.title}>Saved Profiles</h1>
-        <button className={styles.refresh} onClick={load} disabled={loading}>
-          {loading ? "Loading…" : "Refresh"}
-        </button>
+        <p className={styles.subtitle}>Profiles you&apos;ve saved. Click any row to view, edit, or delete.</p>
       </header>
 
       {loading && <Skeleton rows={10} />}

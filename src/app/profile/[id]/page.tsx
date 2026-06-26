@@ -106,20 +106,24 @@ export default function ProfilePage({ params, searchParams }: ProfilePageProps) 
     <div className={styles.page} dir="rtl">
       <header className={styles.header}>
         <button className={styles.backBtn} onClick={() => router.back()}>← חזרה</button>
-        <h1 className={styles.heading}>{fullName}</h1>
+        <h1 className={styles.heading}>פרופיל</h1>
       </header>
 
       <div className={styles.body}>
-        <div className={styles.imageWrapper}>
+        <div className={styles.profileCard}>
           <Image
             src={original.picture}
             alt={fullName}
-            width={160}
-            height={160}
+            width={80}
+            height={80}
             className={styles.avatar}
             unoptimized
             priority
           />
+          <div className={styles.profileMeta}>
+            <span className={styles.profileName}>{fullName}</span>
+            <span className={styles.profileSub}>{original.gender} · {original.country}</span>
+          </div>
         </div>
 
         <section className={styles.section}>
