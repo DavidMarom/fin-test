@@ -38,8 +38,8 @@ export default function ProfilePage({ params, searchParams }: ProfilePageProps) 
   if (!original) {
     return (
       <div className={styles.notFound}>
-        <p>Profile not found.</p>
-        <button className={styles.backBtn} onClick={() => router.back()}>← Back</button>
+        <p>פרופיל לא נמצא.</p>
+        <button className={styles.backBtn} onClick={() => router.back()}>← חזרה</button>
       </div>
     );
   }
@@ -55,9 +55,9 @@ export default function ProfilePage({ params, searchParams }: ProfilePageProps) 
       await saveUser(toSave);
       addSavedUser(toSave);
       updateFetchedUser(id, { first: nameFirst, last: nameLast });
-      setFeedback("Saved successfully!");
+      setFeedback("נשמר בהצלחה!");
     } catch {
-      setFeedback("Failed to save.");
+      setFeedback("שגיאה בשמירה.");
     } finally {
       setBusy(false);
     }
@@ -74,9 +74,9 @@ export default function ProfilePage({ params, searchParams }: ProfilePageProps) 
       } else {
         updateFetchedUser(id, { first: nameFirst, last: nameLast });
       }
-      setFeedback("Updated successfully!");
+      setFeedback("עודכן בהצלחה!");
     } catch {
-      setFeedback("Failed to update.");
+      setFeedback("שגיאה בעדכון.");
     } finally {
       setBusy(false);
     }
@@ -90,51 +90,45 @@ export default function ProfilePage({ params, searchParams }: ProfilePageProps) 
       removeSavedUser(id);
       router.back();
     } catch {
-      setFeedback("Failed to delete.");
+      setFeedback("שגיאה במחיקה.");
       setBusy(false);
     }
   }
 
   return (
-    <div className={styles.page}>
+    <div className={styles.page} dir="rtl">
       <header className={styles.header}>
-        <button className={styles.backBtn} onClick={() => router.back()}>← Back</button>
-        <h1 className={styles.heading}>Profile</h1>
+        <button className={styles.backBtn} onClick={() => router.back()}>← חזרה</button>
+        <h1 className={styles.heading}>פרופיל</h1>
       </header>
 
       <div className={styles.body}>
         <div className={styles.profileCard}>
-          <Image
-            src={original.picture}
-            alt={fullName}
-            width={80}
-            height={80}
-            className={styles.avatar}
-            unoptimized
-            priority
-          />
           <div className={styles.profileMeta}>
             <span className={styles.profileName}>{fullName}</span>
-            <span className={styles.profileSub}>{original.gender} · {original.country}</span>
+            <span className={`${styles.profileSub} ltr-field`}>{original.gender} · {original.country}</span>
           </div>
+          <Image src={original.picture} alt={fullName} width={80} height={80} className={styles.avatar} unoptimized priority />
         </div>
 
         <section className={styles.section}>
           <dl className={styles.grid}>
-            <dt className={styles.label}>Gender</dt>
-            <dd className={styles.value}>{original.gender}</dd>
+            <dt className={styles.label}>מגדר</dt>
+            <dd className={`${styles.value} ltr-field`}>{original.gender}</dd>
 
-            <dt className={styles.label}>Name</dt>
+            <dt className={styles.label}>שם</dt>
             <dd className={styles.nameFields}>
               <input
-                className={styles.input}
+                dir="ltr"
+                className={`${styles.input} ltr-field`}
                 value={nameFirst}
                 onChange={(e) => setNameFirst(e.target.value)}
                 placeholder="First"
                 aria-label="First name"
               />
               <input
-                className={styles.input}
+                dir="ltr"
+                className={`${styles.input} ltr-field`}
                 value={nameLast}
                 onChange={(e) => setNameLast(e.target.value)}
                 placeholder="Last"
@@ -142,24 +136,24 @@ export default function ProfilePage({ params, searchParams }: ProfilePageProps) 
               />
             </dd>
 
-            <dt className={styles.label}>Age</dt>
-            <dd className={styles.value}>
+            <dt className={styles.label}>גיל</dt>
+            <dd className={`${styles.value} ltr-field`}>
               {original.age} (b. {birthYear(original.dob)})
             </dd>
 
-            <dt className={styles.label}>Address</dt>
-            <dd className={styles.value}>
+            <dt className={styles.label}>כתובת</dt>
+            <dd className={`${styles.value} ltr-field`}>
               {original.street}, {original.city}, {original.state}
             </dd>
 
-            <dt className={styles.label}>Country</dt>
-            <dd className={styles.value}>{original.country}</dd>
+            <dt className={styles.label}>מדינה</dt>
+            <dd className={`${styles.value} ltr-field`}>{original.country}</dd>
 
-            <dt className={styles.label}>Email</dt>
-            <dd className={styles.value}>{original.email}</dd>
+            <dt className={styles.label}>אימייל</dt>
+            <dd className={`${styles.value} ltr-field`}>{original.email}</dd>
 
-            <dt className={styles.label}>Phone</dt>
-            <dd className={styles.value}>{original.phone}</dd>
+            <dt className={styles.label}>טלפון</dt>
+            <dd className={`${styles.value} ltr-field`}>{original.phone}</dd>
           </dl>
         </section>
 
@@ -168,19 +162,19 @@ export default function ProfilePage({ params, searchParams }: ProfilePageProps) 
         <div className={styles.actions}>
           {!fromHistory && (
             <button className={styles.btnPrimary} onClick={handleSave} disabled={busy}>
-              Save
+              שמור
             </button>
           )}
           <button className={styles.btnSecondary} onClick={handleUpdate} disabled={busy}>
-            Update
+            עדכן
           </button>
           {fromHistory && (
             <button className={styles.btnDanger} onClick={handleDelete} disabled={busy}>
-              Delete
+              מחק
             </button>
           )}
           <button className={styles.btnGhost} onClick={() => router.back()} disabled={busy}>
-            Back
+            חזרה
           </button>
         </div>
       </div>

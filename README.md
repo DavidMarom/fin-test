@@ -1,5 +1,7 @@
 # FINQ — Random User Profiles
 
+**[Live Demo](https://fin-test-ashy.vercel.app/)**
+
 A full-stack app: fetch random user profiles, view details, save favourites, and manage your collection.
 
 Two clearly separated parts — each with its own README:
