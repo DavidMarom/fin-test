@@ -7,14 +7,10 @@ import { useUserStore } from "@/store/useUserStore";
 import { saveUser, updateUser, deleteUser } from "@/lib/api";
 import type { User } from "@/types/user";
 import styles from "./profile.module.css";
+import type { ProfilePageProps } from "./profile.types";
 
 function birthYear(dob: string): number {
   return new Date(dob).getFullYear();
-}
-
-interface ProfilePageProps {
-  params: Promise<{ id: string }>;
-  searchParams: Promise<{ source?: string }>;
 }
 
 export default function ProfilePage({ params, searchParams }: ProfilePageProps) {
