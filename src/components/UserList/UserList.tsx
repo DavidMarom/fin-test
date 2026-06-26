@@ -6,21 +6,12 @@ import type { User } from "@/types/user";
 import { UserRow } from "@/components/UserRow/UserRow";
 import { FilterInput } from "@/components/FilterInput/FilterInput";
 import styles from "./UserList.module.css";
+import { filterUsers } from "./UserList.utils";
 
 interface UserListProps {
   users: User[];
   source: "fetch" | "history";
   emptyMessage?: string;
-}
-
-function filterUsers(users: User[], query: string): User[] {
-  if (!query.trim()) return users;
-  const q = query.toLowerCase();
-  return users.filter(
-    (u) =>
-      `${u.first} ${u.last}`.toLowerCase().includes(q) ||
-      u.country.toLowerCase().includes(q)
-  );
 }
 
 export function UserList({ users, source, emptyMessage = "No users found." }: UserListProps) {
