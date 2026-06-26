@@ -9,7 +9,7 @@ const rubik = Rubik({
 });
 
 export const metadata: Metadata = {
-  title: "fin - Profiles",
+  title: "FINQ - Profiles",
   description: "home assignment",
   icons: {
     icon: [
